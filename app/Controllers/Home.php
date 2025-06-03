@@ -32,51 +32,47 @@ class Home extends BaseController
     }
 
 
-    public function listUsers($id = ""){
-             $users = [
-            [
-                'id'    => 1,
-                'name'  => 'Anna Ozoliņa',
-                'email' => 'anna@example.com',
-            ],
-            [
-                'id'    => 2,
-                'name'  => 'Jānis Bērziņš',
-                'email' => 'janis@example.com',
-            ],
-            [
-                'id'    => 3,
-                'name'  => 'Laura Kalniņa',
-                'email' => 'laura@example.com',
-            ],
-            [
-                'id'    => 4,
-                'name'  => 'Mārtiņš Liepa',
-                'email' => 'martins@example.com',
-            ],
-            [
-                'id'    => 5,
-                'name'  => 'Ilze Lapiņa',
-                'email' => 'ilze@example.com',
-            ],
-        ];
+    public function listUsers($id = "")
+{
+    $users = [
+        [
+            'id'    => 1,
+            'name'  => 'Anna Ozoliņa',
+            'email' => 'anna@example.com',
+        ],
+        [
+            'id'    => 2,
+            'name'  => 'Jānis Bērziņš',
+            'email' => 'janis@example.com',
+        ],
+        [
+            'id'    => 3,
+            'name'  => 'Laura Kalniņa',
+            'email' => 'laura@example.com',
+        ],
+        [
+            'id'    => 4,
+            'name'  => 'Mārtiņš Liepa',
+            'email' => 'martins@example.com',
+        ],
+        [
+            'id'    => 5,
+            'name'  => 'Ilze Lapiņa',
+            'email' => 'ilze@example.com',
+        ],
+    ];
 
-        
-        if($id==""){
-                 return $this->response->setJSON($users);
-        }else{
-            $users_filtered = array_filter($users,function($item){
-                if($item["id"]==$id){
-                    return $item;
-                }
-            });
-            return $this->response->setJSON($users_filtered);
-        }
+    if ($id === "") {
+        return $this->response->setJSON($users);
+    } else {
+        $id = (int) $id; // nodrošinām, ka tas ir skaitlis
+        $filtered = array_values(array_filter($users, function ($item) use ($id) {
+            return $item['id'] === $id;
+        }));
 
-         
-
-        
+        return $this->response->setJSON($filtered);
     }
+}
 
 
 }

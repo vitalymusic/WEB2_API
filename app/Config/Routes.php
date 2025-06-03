@@ -8,6 +8,7 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 $routes->get('/lietotaji', 'Home::listUsers');
 $routes->get('/users', 'Home::listUsers');
+$routes->get('/users/(:num)', 'Home::listUsers/$1');
 
 // endpoints
 
