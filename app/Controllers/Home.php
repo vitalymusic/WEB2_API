@@ -25,7 +25,6 @@ class Home extends BaseController
             ]
         ];
 
-
         return $this->response->setJSON($data);
 
         // return view('welcome_message');
@@ -65,14 +64,29 @@ class Home extends BaseController
     if ($id === "") {
         return $this->response->setJSON($users);
     } else {
-        $id = (int) $id; // nodrošinām, ka tas ir skaitlis
-        $filtered = array_values(array_filter($users, function ($item) use ($id) {
-            return $item['id'] === $id;
+        $filtered = array_values(array_filter($users, function 
+        ($item) use ($id) {
+            return $item['id'] == $id;
         }));
 
         return $this->response->setJSON($filtered);
     }
 }
+
+
+    public function showProducts(){
+            $data = [];
+
+            $db      = \Config\Database::connect();
+            $builder = $db->table('products');
+            $query   = $builder->get();
+
+            foreach ($query->getResult() as $row) {
+                $data[] = $row;
+            }
+
+              return $this->response->setJSON($data);   
+    }
 
 
 }

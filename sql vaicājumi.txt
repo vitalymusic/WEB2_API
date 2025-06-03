@@ -1,0 +1,22 @@
+INSERT INTO produkti (nosaukums, apraksts, cena, attels) VALUES
+('Siers Gouda', 'Maigs, pussausais holandiešu siers ar dzeltenīgu garoziņu.', 5.49, 'siers_gouda.jpg'),
+('Tomāti', 'Svaigi, sulīgi tomāti no vietējās saimniecības.', 2.29, 'tomati.jpg'),
+('Piens 2%', 'Pastērizēts govs piens ar 2% tauku saturu.', 1.15, 'piens_2procenti.jpg'),
+('Maize rudzu', 'Tradicionāla rupjmaize ar ķimenēm.', 1.89, 'maize_rudzu.jpg'),
+('Olas (10 gab.)', 'Brīvos apstākļos dētas vistas olas.', 2.99, 'olas_10gab.jpg'),
+('Āboli Granny Smith', 'Skābenie zaļie āboli, piemēroti gan ēšanai, gan cepšanai.', 2.49, 'aboli_granny_smith.jpg'),
+('Burkāni', 'Svaigi un saldi burkāni iepakojumā (1kg).', 1.10, 'burkani.jpg'),
+('Cukurs', 'Baltais cukurs cepšanai un saldināšanai (1kg).', 1.05, 'cukurs.jpg'),
+('Kafija malta', 'Aromātiska malta kafija, vidējas grauzdēšanas (250g).', 3.99, 'kafija_malta.jpg'),
+('Sviests', 'Svaigs Latvijas sviests ar 82% tauku.', 2.45, 'sviests.jpg'),
+('Šokolāde tumšā', 'Tumšā šokolāde ar 70% kakao saturu.', 1.89, 'sokolade_tumsa.jpg'),
+('Banāni', 'Gatavi ēšanai, dzelteni banāni no Ekvadoras.', 1.59, 'banani.jpg'),
+('Jogurts zemeņu', 'Krēmīgs jogurts ar zemeņu gabaliņiem (150g).', 0.89, 'jogurts_zemenu.jpg'),
+('Rīsi baltie', 'Ilgāk vārāmie baltie rīsi 1kg iepakojumā.', 1.35, 'risi_baltie.jpg'),
+('Citrons', 'Svaigi citroni, bagāti ar C vitamīnu.', 0.75, 'citrons.jpg'),
+('Cūkgaļas karbonāde', 'Atdzesēta karbonāde bez kaula, piemērota cepšanai.', 4.99, 'cukgala_karbonade.jpg'),
+('Laša fileja', 'Svaiga norvēģu laša fileja bez ādas.', 7.95, 'lasa_fileja.jpg'),
+('Sāls jūras', 'Smalki malta jūras sāls burciņā (500g).', 1.25, 'sals_juras.jpg'),
+('Medus', 'Dabīgs Latvijas ziedu medus (400g).', 4.25, 'medus.jpg'),
+('Minerālūdens gāzēts', 'Atspirdzinošs dzēriens ar ogļskābo gāzi (1.5L).', 0.99, 'mineraluudens_gazets.jpg');
+
