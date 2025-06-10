@@ -4,6 +4,16 @@ namespace App\Controllers;
 class Home extends BaseController
 
 {
+    function __construct(){
+
+        $this->db = \Config\Database::connect();
+        $this->request = service('request');
+
+    }
+
+
+
+
     public function index()
         
     {
@@ -74,13 +84,18 @@ class Home extends BaseController
 }
 
 
-    public function showProducts(){
+    public function showProducts($id = ""){
             $data = [];
 
-            $db      = \Config\Database::connect();
-            $builder = $db->table('products');
-            $query   = $builder->get();
-
+           
+            $builder = $this->db->table('products');
+            
+            if($id==""){
+                $query   = $builder->get();
+            }else{
+                $query   = $builder->where('id',$id)->get();
+            }
+            
             foreach ($query->getResult() as $row) {
                 $data[] = $row;
             }
@@ -89,4 +104,22 @@ class Home extends BaseController
     }
 
 
-}
+    public function addProduct(){
+           
+
+            $builder = $this->db->table('products');
+            //$data = $this->request->getPost();
+            $data = [
+                "nosaukums"=>esc($this->request->getPost('nosaukums')),
+                "apraksts"=>esc($this->request->getPost('apraksts')),
+                "cena"=>esc($this->request->getPost('cena')),
+                "attels"=>esc($this->request->getPost('attels'))
+            ];
+            if($builder->insert($data)){
+                    return $this->response->setJSON(["success"=>true]);}  
+                    else{
+                    return $this->response->setJSON(["success"=>false]); 
+                    }
+            }
+
+    }
