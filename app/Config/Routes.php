@@ -21,4 +21,9 @@ $routes->get('/products/(:num)', 'Home::showProducts/$1');
 // POST
 // add_product
 $routes->post('/products/create', 'Home::addProduct');
+$routes->post('/products/update/(:num)', 'Home::updateProduct/$1');
 
+
+
+// delete product
+$routes->delete('/products/delete/(:num)', 'Home::deleteProduct/$1');

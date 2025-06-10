@@ -86,8 +86,6 @@ class Home extends BaseController
 
     public function showProducts($id = ""){
             $data = [];
-
-           
             $builder = $this->db->table('products');
             
             if($id==""){
@@ -120,6 +118,38 @@ class Home extends BaseController
                     else{
                     return $this->response->setJSON(["success"=>false]); 
                     }
+            }
+
+
+            public function updateProduct($id=""){
+                    if($id=="") return false;
+                      $builder = $this->db->table('products');
+                     $data = [
+                        "nosaukums"=>esc($this->request->getPost('nosaukums')),
+                        "apraksts"=>esc($this->request->getPost('apraksts')),
+                        "cena"=>esc($this->request->getPost('cena')),
+                        "attels"=>esc($this->request->getPost('attels'))
+                    ];
+
+             if($builder->where('id',$id)->update($data)){
+                    return $this->response->setJSON(["success"=>true]);}  
+                    else{
+                    return $this->response->setJSON(["success"=>false]); 
+                    }
+
+            }
+
+
+
+            public function deleteProduct($id){
+               // $data = $this->request->getPost();
+               if($this->request->is('delete')){
+                    $builder = $this->db->table('products');
+                    if($builder->delete(['id' => $id])){
+                             return $this->response->setJSON(["deleted"=>true]); 
+                    }
+               }
+                
             }
 
     }
