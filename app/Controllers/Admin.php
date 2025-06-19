@@ -17,6 +17,18 @@ class Admin extends BaseController{
         return view('admin/main_screen.php',$data);
     }
 
+    
+    public function login(){
+        $data = [
+            
+        ];
+        return view('admin/login_screen.php',$data);
+    }
+
+
+
+    
+
       public function users(){
         $data = [
              "active_page"=>"users"

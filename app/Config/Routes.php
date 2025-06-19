@@ -29,8 +29,13 @@ $routes->post('/products/update/(:num)', 'Home::updateProduct/$1');
 $routes->get('/products/delete/(:num)', 'Home::deleteProduct/$1');
 
 
+// Login
+
+$routes->get('/login', 'Admin::login');
+
 // Administration
 $routes->get('/admin', 'Admin::index');
+
 
 $routes->get('/admin/pages', 'Admin::pages');
 $routes->get('/admin/users', 'Admin::users');
