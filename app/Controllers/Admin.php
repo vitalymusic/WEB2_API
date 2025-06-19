@@ -12,7 +12,9 @@ class Admin extends BaseController{
 
     public function index(){
 
-        return view('admin/layout.php');
+        return view('admin/main_screen.php');
+
+
     }
 
 

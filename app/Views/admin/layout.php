@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administrēšana</title>
+    <title> <?= $this->renderSection('title') ?></title>
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
@@ -23,16 +23,16 @@
     <hr class="text-white" />
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
-        <a href="#" class="nav-link active">📊 Pārskats</a>
+        <a href="<?=base_url('/admin')?>" class="nav-link active">📊 Pārskats</a>
       </li>
       <li>
-        <a href="#" class="nav-link">👥 Lietotāji</a>
+        <a href="<?=base_url('/admin/users')?>" class="nav-link">👥 Lietotāji</a>
       </li>
       <li>
-        <a href="#" class="nav-link">📦 Produkti</a>
+        <a href="<?=base_url('/admin/posts')?>" class="nav-link">📦 Ziņas</a>
       </li>
       <li>
-        <a href="#" class="nav-link">📝 Pasūtījumi</a>
+        <a href="<?=base_url('/admin/gallery')?>" class="nav-link">📝 Galerija</a>
       </li>
       <li>
         <a href="#" class="nav-link">⚙️ Iestatījumi</a>
@@ -43,8 +43,9 @@
   </nav>
 
   <div class="main-content">
-    <h1>Laipni lūdzam admin panelī</h1>
-    <p>Izvēlieties darbību izvēlnē pa kreisi.</p>
+
+    <?= $this->renderSection('content') ?>
+
   </div>
 
 </body>
