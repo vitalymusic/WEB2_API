@@ -11,8 +11,8 @@
     <!-- jquery -->
     <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-    <script src="./js/script1.js"></script>
-    <link rel="stylesheet" href="./css/admin.css">
+    <script src="<?=base_url()?>/js/script1.js"></script>
+    <link rel="stylesheet" href="<?=base_url()?>/css/admin.css">
 
 
 </head>
@@ -23,16 +23,17 @@
     <hr class="text-white" />
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
-        <a href="<?=base_url('/admin')?>" class="nav-link active">📊 Pārskats</a>
+        <a href="<?=base_url('/admin')?>" 
+        class="nav-link <?= $active_page=="index"?"active":"" ?>">📊 Pārskats</a>
       </li>
       <li>
-        <a href="<?=base_url('/admin/users')?>" class="nav-link">👥 Lietotāji</a>
+        <a href="<?=base_url('/admin/users')?>" class="nav-link <?= $active_page=="users"?"active":"" ?>">👥 Lietotāji</a>
       </li>
       <li>
-        <a href="<?=base_url('/admin/posts')?>" class="nav-link">📦 Ziņas</a>
+        <a href="<?=base_url('/admin/posts')?>" class="nav-link <?= $active_page=="posts"?"active":"" ?>">📦 Ziņas</a>
       </li>
       <li>
-        <a href="<?=base_url('/admin/gallery')?>" class="nav-link">📝 Galerija</a>
+        <a href="<?=base_url('/admin/gallery')?>" class="nav-link <?= $active_page=="gallery"?"active":"" ?>">📝 Galerija</a>
       </li>
       <li>
         <a href="#" class="nav-link">⚙️ Iestatījumi</a>
