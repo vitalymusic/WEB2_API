@@ -47,6 +47,5 @@
     <p>Izvēlieties darbību izvēlnē pa kreisi.</p>
   </div>
 
-
 </body>
 </html>
