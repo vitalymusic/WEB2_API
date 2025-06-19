@@ -10,11 +10,17 @@ class Admin extends BaseController{
 
     }
 
+    private function checkUser(){
+         if( !$this->session->get("email") || $this->session->get('logged_in')!==true ){
+                return false;
+            }
+    }
 
     public function index(){
-             if( !$this->session->get("email") || !$this->session->get('logged_in')===true ){
+
+            if($this->checkUser()===false){
                 return redirect()->to('/login');
-            }
+            };
 
         $data = [
             "active_page"=>"index"
@@ -51,7 +57,7 @@ class Admin extends BaseController{
                if(password_verify($data["password"], $user[0]["password"])){
                     $this->session->set($user[0]);
                     $this->session->set("logged_in",true);
-                    $this->session->set("error","");
+                    $this->session->remove("error");
                } else{
                     //   $this->session->remove('');
                       $this->session->set("logged_in",false);
@@ -70,6 +76,8 @@ class Admin extends BaseController{
                 return redirect()->to('/login');
             }
     }
+
+
 
 
 
