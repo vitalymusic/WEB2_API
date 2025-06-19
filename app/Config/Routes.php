@@ -32,6 +32,7 @@ $routes->get('/products/delete/(:num)', 'Home::deleteProduct/$1');
 // Login
 
 $routes->get('/login', 'Admin::login');
+$routes->post('/authorize', 'Admin::authorize');
 
 // Administration
 $routes->get('/admin', 'Admin::index');
