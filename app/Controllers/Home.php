@@ -143,12 +143,11 @@ class Home extends BaseController
 
             public function deleteProduct($id){
                // $data = $this->request->getPost();
-               if($this->request->is('delete')){
+              
                     $builder = $this->db->table('products');
                     if($builder->delete(['id' => $id])){
                              return $this->response->setJSON(["deleted"=>true]); 
                     }
-               }
                 
             }
 
