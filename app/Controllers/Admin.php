@@ -164,22 +164,45 @@ class Admin extends BaseController{
 
     public function upload_file(){
         // admin/gallery/upload
+       $uploadedFiles = $this->request->getFiles();
+$results = [];
 
-         $img = $this->request->getFile('file');
+if (isset($uploadedFiles['files'])) {
+    foreach ($uploadedFiles['files'] as $file) {
+        if ($file->isValid() && !$file->hasMoved()) {
+            $originalName = $file->getName();
+            $uploadPath = WRITEPATH . 'uploads/';
 
-        if (! $img->hasMoved()) {
+            // Ja fails jau eksistē, pievieno timestamp
+            if (file_exists($uploadPath . $originalName)) {
+                $originalName = time() . '_' . $originalName;
+            }
 
-             $uploadPath = WRITEPATH . 'uploads/';
-            $img->move($uploadPath, $img->getName());
-            $data = [
-                'success' => true
+            $file->move($uploadPath, $originalName);
+            $results[] = [
+                'file' => $originalName,
+                'status' => 'success'
             ];
-            return $this->response->setJSON($data);
+        } else {
+            $results[] = [
+                'file' => $file->getName(),
+                'status' => 'error',
+                'message' => $file->getErrorString()
+            ];
         }
-        $data = [
-            'errors' => 'The file has already been moved.'
-        ];
-        return $this->response->setJSON($data);
+    }
+
+    return $this->response->setJSON([
+        'success' => true,
+        'results' => $results
+    ]);
+} else {
+    return $this->response->setJSON([
+        'success' => false,
+        'message' => 'Faili netika saņemti.'
+    ]);
+}
+
     }
 
 

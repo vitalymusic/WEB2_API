@@ -12,7 +12,7 @@
     <form action="" method="POST" enctype="multipart/form-data" id="file_upload">
       <div class="mb-3">
         <label for="formFile" class="form-label">Izvēlies failu</label>
-        <input class="form-control" type="file" id="formFile" name="file" accept="image/*">
+        <input class="form-control" type="file" id="formFile" name="files[]" accept="image/*" multiple>
       </div>
       <button type="submit" class="btn btn-primary">Augšupielādēt</button>
     </form>
