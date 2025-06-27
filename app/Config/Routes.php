@@ -43,3 +43,11 @@ $routes->get('/admin/users', 'Admin::users');
 $routes->get('/admin/posts', 'Admin::posts');
 $routes->get('/admin/gallery', 'Admin::gallery');
 $routes->get('/admin/logout', 'Admin::logout');
+
+
+// upload file
+
+
+$routes->post('/admin/gallery/upload', 'Admin::upload_file');
+
+

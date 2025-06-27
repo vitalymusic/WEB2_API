@@ -27,9 +27,7 @@
     $(document).ready(()=>{
         $('#file_upload').on('submit',(e)=>{
             e.preventDefault();
-               let form = document.getElementById('file_upload');
-
-            let data = new FormData(form);
+            let data = new FormData(document.querySelector('#file_upload'));
 
          $.ajax({
             url: '<?=base_url('admin/gallery/upload')?>',
@@ -45,10 +43,8 @@
                 console.error('Kļūda:', error);
             }
         });
-
         })
     })
-
   </script>
        
 <?= $this->endSection() ?>
