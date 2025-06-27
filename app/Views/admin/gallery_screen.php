@@ -18,7 +18,7 @@
     </form>
   </div>
   <hr>
-  <div>
+  <div id="fileList" >
     Failu saraksts šeit!!!
   </div>
 
@@ -36,7 +36,8 @@
             contentType: false,
             processData: false,
             success: function(response) {
-                console.log(response);
+               showFiles();
+                // console.log(response);
                 // Piemēram: parādi ziņu vai atiestati formu
             },
             error: function(xhr, status, error) {
@@ -44,6 +45,36 @@
             }
         });
         })
+
+        showFiles();
+
+
+        // Failu saraksts;
+
+        function showFiles(){
+          let contentDiv = $('#fileList');
+          contentDiv.empty();
+
+          $.get('<?=base_url('admin/gallery/listfiles')?>',(resp)=>{
+            
+              console.log(resp);
+
+              if(resp.success==true){
+                for (file of resp.files){
+                   contentDiv.append(`
+                      <div class="file">
+                        <img src="${file.url}">
+                        <h5>${file.name}</h5>
+
+                      <div>
+                   `);
+                }
+              }
+
+
+          })
+
+        }
     })
   </script>
        

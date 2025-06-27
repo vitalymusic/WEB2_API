@@ -1,6 +1,10 @@
 <?php
 
 namespace App\Controllers;
+
+use CodeIgniter\Files\FileCollection;
+use CodeIgniter\Files\File;
+
 class Admin extends BaseController{
       function __construct(){
 
@@ -132,8 +136,48 @@ class Admin extends BaseController{
         $data = [
              "active_page"=>"gallery"
         ];    
+
+
+
+
+
+
         return view('admin/gallery_screen.php',$data);
     }
+
+
+     public function list_files()
+    {
+
+        $folder = FCPATH . 'uploads/';
+        $collection = new FileCollection();
+
+        // Ielasa visus failus no mapes (neieskaitot apakšmapes)
+        $collection->add($folder);
+
+        // Atlasīt tikai failus (ne mapes)
+        // $files = $collection->filter(static fn($file) => $file->isFile());
+
+         $files = $collection;
+
+        $output = [];
+
+        foreach ($files as $file) {
+            /** @var File $file */
+            $output[] = [
+                'name' => $file->getBasename(),
+                'size' => $file->getSize(),
+                'url'  => base_url('uploads/' . $file->getBasename()), // Ja publiskā mape
+            ];
+        }
+
+        return $this->response->setJSON([
+            'success' => true,
+            'files'   => $output,
+        ]);
+    }
+
+
      public function posts(){
          if($this->checkUser()===false){
                 return redirect()->to('/login');
@@ -171,7 +215,7 @@ if (isset($uploadedFiles['files'])) {
     foreach ($uploadedFiles['files'] as $file) {
         if ($file->isValid() && !$file->hasMoved()) {
             $originalName = $file->getName();
-            $uploadPath = WRITEPATH . 'uploads/';
+            $uploadPath = FCPATH . 'uploads/';
 
             // Ja fails jau eksistē, pievieno timestamp
             if (file_exists($uploadPath . $originalName)) {

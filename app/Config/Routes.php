@@ -49,5 +49,6 @@ $routes->get('/admin/logout', 'Admin::logout');
 
 
 $routes->post('/admin/gallery/upload', 'Admin::upload_file');
+$routes->get('/admin/gallery/listfiles', 'Admin::list_files');
 
 
