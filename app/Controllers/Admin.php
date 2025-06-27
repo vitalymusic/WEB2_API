@@ -11,7 +11,7 @@ class Admin extends BaseController{
     }
 
     private function checkUser(){
-         if( !$this->session->get("email") || $this->session->get('logged_in')!==true ){
+         if( $this->session->get("email")==="" || $this->session->get('logged_in') !== true ){
                 return false;
             }
     }
@@ -86,6 +86,10 @@ class Admin extends BaseController{
     
 
       public function users(){
+          if($this->checkUser()===false){
+                return redirect()->to('/login');
+            };
+
         $data = [
              "active_page"=>"users"
         ];
@@ -93,6 +97,11 @@ class Admin extends BaseController{
     }
 
      public function gallery(){
+          if($this->checkUser()===false){
+                return redirect()->to('/login');
+            };
+
+
         $data = [
              "active_page"=>"gallery"
         ];    
