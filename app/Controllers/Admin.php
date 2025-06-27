@@ -168,8 +168,9 @@ class Admin extends BaseController{
          $img = $this->request->getFile('file');
 
         if (! $img->hasMoved()) {
-            $filepath = WRITEPATH . 'uploads/' . $img->store();
-            // $data = ['uploaded_fileinfo' => new File($filepath)];
+
+             $uploadPath = WRITEPATH . 'uploads/';
+            $img->move($uploadPath, $img->getName());
             $data = [
                 'success' => true
             ];
