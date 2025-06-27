@@ -118,9 +118,7 @@ class Admin extends BaseController{
 
         $table->setTemplate($template);
 
-
            $data["users"] = $table->generate($query);
-
 
         return view('admin/users_screen.php',$data);
     }
@@ -137,9 +135,28 @@ class Admin extends BaseController{
         return view('admin/gallery_screen.php',$data);
     }
      public function posts(){
+         if($this->checkUser()===false){
+                return redirect()->to('/login');
+        };
+
+
         $data = [
              "active_page"=>"posts"
         ];
+
+          $table = new \CodeIgniter\View\Table();
+            $builder = $this->db->table('posts');
+            $query = $builder->get();
+             $table->setHeading('NPK', 'Virsraksts', 'Saturs','Izveides datums');
+
+              $template = [
+            'table_open' => '<table border="1" cellpadding="2" cellspacing="1" class="table table-bordered">',
+        ];
+
+        $table->setTemplate($template);
+
+           $data["posts"] = $table->generate($query);
+
         return view('admin/posts_screen.php',$data);
     }
 

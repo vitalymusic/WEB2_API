@@ -6,5 +6,6 @@
 
 <?= $this->section('content') ?>
     <h1>Ziņas</h1>
+    <?= $posts?>
       
 <?= $this->endSection() ?>
