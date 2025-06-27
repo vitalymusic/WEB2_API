@@ -163,26 +163,22 @@ class Admin extends BaseController{
 
 
     public function upload_file(){
-
-
         // admin/gallery/upload
 
-         $img = $this->request->getFile('userfile');
+         $img = $this->request->getFile('file');
 
         if (! $img->hasMoved()) {
             $filepath = WRITEPATH . 'uploads/' . $img->store();
-            $data = ['uploaded_fileinfo' => new File($filepath)];
+            // $data = ['uploaded_fileinfo' => new File($filepath)];
             $data = [
                 'success' => true
             ];
             return $this->response->setJSON($data);
         }
-
         $data = [
             'errors' => 'The file has already been moved.'
         ];
         return $this->response->setJSON($data);
-
     }
 
 
