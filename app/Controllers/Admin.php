@@ -39,6 +39,13 @@ class Admin extends BaseController{
         return view('admin/login_screen.php',$data);
     }
 
+
+    public function logout(){
+               $this->session->destroy();
+               return redirect()->to('/login');
+
+    }
+
     public function authorize(){
             // admin@gmail.com
             // 12345
@@ -90,9 +97,31 @@ class Admin extends BaseController{
                 return redirect()->to('/login');
             };
 
+            $table = new \CodeIgniter\View\Table();
+
         $data = [
              "active_page"=>"users"
         ];
+
+        // Ielādēt lietotājus no DB, 
+        // ielikt tos tabulā
+
+           $builder = $this->db->table('users');
+           $users = [];
+            $query = $builder->select('id,name,email,role,status,created_at')->get();
+
+
+            $table->setHeading('NPK', 'Vārds', 'Epasts','Loma','Aktīvs','Izveides datums');
+                    $template = [
+            'table_open' => '<table border="1" cellpadding="2" cellspacing="1" class="table table-bordered">',
+        ];
+
+        $table->setTemplate($template);
+
+
+           $data["users"] = $table->generate($query);
+
+
         return view('admin/users_screen.php',$data);
     }
 
@@ -113,6 +142,9 @@ class Admin extends BaseController{
         ];
         return view('admin/posts_screen.php',$data);
     }
+
+
+
 
 
 

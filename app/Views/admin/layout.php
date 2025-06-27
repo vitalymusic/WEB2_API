@@ -40,7 +40,7 @@
       </li>
     </ul>
     <hr class="text-white" />
-    <a href="#" class="text-white">🚪 Atslēgties</a>
+    <a href="<?=base_url('/admin/logout')?>" class="text-white">🚪 Atslēgties</a>
   </nav>
 
   <div class="main-content">

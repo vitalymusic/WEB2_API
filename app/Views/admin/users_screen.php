@@ -6,5 +6,6 @@
 
 <?= $this->section('content') ?>
     <h1>Lietotāji</h1>
+    <?= $users ?>
     
 <?= $this->endSection() ?>
