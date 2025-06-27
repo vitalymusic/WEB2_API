@@ -18,7 +18,7 @@
     </form>
   </div>
   <hr>
-  <div id="fileList" >
+  <div id="fileList" class="d-flex gap-3">
     Failu saraksts šeit!!!
   </div>
 
@@ -63,7 +63,7 @@
                 for (file of resp.files){
                    contentDiv.append(`
                       <div class="file">
-                        <img src="${file.url}">
+                        <img src="${file.url}" width="100%">
                         <h5>${file.name}</h5>
 
                       <div>
