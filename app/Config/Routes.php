@@ -57,5 +57,6 @@ $routes->get('/admin/gallery/listfiles', 'Admin::list_files');
 
 // SHOP
 $routes->get('/veikals', 'Shop::index');
+$routes->post('/veikals/login', 'Shop::login');
 
 

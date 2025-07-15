@@ -32,7 +32,7 @@
         <h5 class="modal-title" id="loginModalLabel">Login to MyShop</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="<?= base_url('login') ?>" method="post">
+      <form action="" method="post" id="customerForm">
         <div class="modal-body">
           <?php if (session()->getFlashdata('error')): ?>
             <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
@@ -57,10 +57,28 @@
 <!-- Login page -->
 
 <script>
+
+   var loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+
   function showUserLogin(){
-    var loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
       loginModal.show();
   }
 
+
+// formas apstrāde
+
+
+$('#customerForm').submit((e)=>{
+  e.preventDefault();
+  data = $('#customerForm').serialize();
+  $.post('<?= base_url('veikals/login')?>',data,function(data){
+    console.log(data);
+    if(data.message=="success"){
+      loginModal.hide();
+    }
+  });
+
+
+})
 </script>
 <?= $this->endSection() ?>

@@ -8,7 +8,7 @@ class Shop extends BaseController
 
         $this->db = \Config\Database::connect();
         $this->request = service('request');
-
+          $this->session = session();
     }
 
     public function index(){
@@ -22,6 +22,48 @@ class Shop extends BaseController
        $data["title"] = "Veikals";
 
         return view('shop/main_screen',$data);
+    }
+
+
+
+    public function login(){
+
+        // janis@example.com
+        // 12345
+
+            $data = $this->request->getPost();
+            $builder = $this->db->table('customers');
+            $query = $builder->like('email', $data["email"])->get();
+
+            // $user = "";
+           
+            $user = $query->getResultArray();
+
+            if($user){
+               
+               if(password_verify($data["password"], $user[0]["password"])){
+                    $this->session->set($user[0]);
+                    $this->session->set("logged_in",true);
+               } else{
+                    //   $this->session->remove('');
+                      $this->session->set("logged_in",false);
+                      $this->session->setFlashdata("error","Nepareizs lietotājs un vai parole");
+                      $this->session->close();
+               }   
+            }else{
+                    
+                    $this->session->set("logged_in",false);
+                    $this->session->setFlashdata("error","Nepareizs lietotājs un vai parole");
+            }  
+            
+            if( $this->session->get("email") && $this->session->get('logged_in')===true ){
+                $data["user"] = $user;
+                $data["message"]="success";
+                return $this->response->setJSON($data);
+            }else{
+                $data["message"]="false";
+                return $this->response->setJSON($data);
+            }
     }
 
 }

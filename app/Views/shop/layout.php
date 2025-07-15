@@ -27,7 +27,11 @@
         <li class="nav-item"><a class="nav-link" href="<?=base_url('/veikals')?>">Sākums</a></li>
         <li class="nav-item"><a class="nav-link" href="<?=base_url('/veikals/mani_produkti')?>">Mani produkti</a></li>
         <li class="nav-item"><a class="nav-link" href="<?=base_url('/veikals/grozs')?>">Cart</a></li>
-        <li class="nav-item"><a class="nav-link" href="#" onclick="showUserLogin()">Login</a></li>
+        <?php if(session()->logged_in==true): ?>
+           <li class="nav-item"><a class="nav-link" href="<?=base_url('veikals/logout')?>" >Logout</a></li>
+          <?php else: ?>
+            <li class="nav-item"><a class="nav-link" href="#" onclick="showUserLogin()">Login</a></li>
+        <?php endif ;?>  
       </ul>
     </div>
   </div>
