@@ -58,7 +58,8 @@
 
 <script>
   function showUserLogin(){
-    alert();
+    var loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+      loginModal.show();
   }
 
 </script>
