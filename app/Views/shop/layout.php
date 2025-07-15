@@ -37,7 +37,7 @@
   <div class="main-content">
 
     <?= $this->renderSection('content') ?>
-
+        
   </div>
 
 

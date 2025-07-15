@@ -133,3 +133,26 @@ in APPPATH/Views/shop/main_screen.php on line 11.
  9 SYSTEMPATH/Boot.php(334): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
 11 FCPATH/index.php(70): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-07-15 16:42:18 --> ErrorException: Undefined variable $products
+[Method: GET, Route: veikals]
+in APPPATH/Controllers/Shop.php on line 20.
+ 1 APPPATH/Controllers/Shop.php(20): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $products', '/Applications/MAMP/htdocs/web2_api/app/Controllers/Shop.php', 20)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Shop->index()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop))
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(70): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-07-15 16:42:44 --> Error: Cannot use object of type stdClass as array
+[Method: GET, Route: veikals]
+in APPPATH/Views/shop/main_screen.php on line 14.
+ 1 SYSTEMPATH/View/View.php(224): include()
+ 2 SYSTEMPATH/View/View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH/Common.php(1173): CodeIgniter\View\View->render('shop/main_screen', [], true)
+ 4 APPPATH/Controllers/Shop.php(25): view('shop/main_screen', [...])
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Shop->index()
+ 6 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop))
+ 7 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(70): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
