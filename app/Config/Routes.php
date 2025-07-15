@@ -52,3 +52,10 @@ $routes->post('/admin/gallery/upload', 'Admin::upload_file');
 $routes->get('/admin/gallery/listfiles', 'Admin::list_files');
 
 
+
+
+
+// SHOP
+$routes->get('/veikals', 'Shop::index');
+
+
