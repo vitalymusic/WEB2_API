@@ -21,4 +21,45 @@
     </div>
   <?php endforeach; ?>
 </div>
+
+
+
+<!-- Login page -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-3 shadow-lg">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLabel">Login to MyShop</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="<?= base_url('login') ?>" method="post">
+        <div class="modal-body">
+          <?php if (session()->getFlashdata('error')): ?>
+            <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
+          <?php endif; ?>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" name="email" class="form-control" id="email" required autofocus>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" name="password" class="form-control" id="password" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary w-100">Login</button>
+          <p class="text-center mt-2 small">Don't have an account? <a href="<?= base_url('register') ?>">Register</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- Login page -->
+
+<script>
+  function showUserLogin(){
+    alert();
+  }
+
+</script>
 <?= $this->endSection() ?>

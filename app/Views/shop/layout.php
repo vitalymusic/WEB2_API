@@ -27,7 +27,7 @@
         <li class="nav-item"><a class="nav-link" href="<?=base_url('/veikals')?>">Sākums</a></li>
         <li class="nav-item"><a class="nav-link" href="<?=base_url('/veikals/mani_produkti')?>">Mani produkti</a></li>
         <li class="nav-item"><a class="nav-link" href="<?=base_url('/veikals/grozs')?>">Cart</a></li>
-        <li class="nav-item"><a class="nav-link" href="<?=base_url('/veikals/login')?>">Login</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" onclick="showUserLogin()">Login</a></li>
       </ul>
     </div>
   </div>
