@@ -66,5 +66,34 @@ class Shop extends BaseController
             }
     }
 
+    public function show_products(){
+          $data["title"] = "iegādātie produkti";
+
+
+
+           $builder = $this->db->table('digital_products');
+            $data["products"] = [];
+            $builder->select('*');
+            $builder->join('customers_digital_products', 'customers_digital_products.product_id = digital_products.id');
+            $builder->join('customers', 'customers_digital_products.customer = customers.id');
+            $builder->where('customers.id',session()->id);
+            $query = $builder->get();
+            foreach ($query->getResultArray() as $row) {
+               $data["products"][] =  $row;
+            }
+       $data["title"] = "Veikals";
+       return dd($data);
+
+        return view('shop/main_screen',$data);
+
+    }
+
+     private function checkProduct(){
+
+
+     }
+
+
+
 }
 
