@@ -6,7 +6,7 @@
   <p>Discover the best deals on our platform!</p>
 </div>
 
-<div class="row mt-4">
+<div class="row m-4 ">
   <!-- Example Product Cards -->
   <?php foreach ($products as $product): ?>
     <div class="col-md-4">
