@@ -5,3 +5,285 @@ DEBUG - 2025-07-22 15:11:19 --> Session: Class initialized using 'CodeIgniter\Se
 DEBUG - 2025-07-22 15:11:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2025-07-22 15:11:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2025-07-22 15:12:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-22 15:15:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-22 15:16:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-07-22 15:16:22 --> mysqli_sql_exception: Unknown column 'digital_products.url' in 'field list' in /Applications/MAMP/htdocs/web2_api/system/Database/MySQLi/Connection.php:327
+Stack trace:
+#0 /Applications/MAMP/htdocs/web2_api/system/Database/MySQLi/Connection.php(327): mysqli->query('SELECT `digital...', 0)
+#1 /Applications/MAMP/htdocs/web2_api/system/Database/BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `digital...')
+#2 /Applications/MAMP/htdocs/web2_api/system/Database/BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `digital...')
+#3 /Applications/MAMP/htdocs/web2_api/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `digital...', Array, false)
+#4 /Applications/MAMP/htdocs/web2_api/app/Controllers/Shop.php(80): CodeIgniter\Database\BaseBuilder->get()
+#5 /Applications/MAMP/htdocs/web2_api/system/CodeIgniter.php(933): App\Controllers\Shop->show_products()
+#6 /Applications/MAMP/htdocs/web2_api/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop))
+#7 /Applications/MAMP/htdocs/web2_api/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /Applications/MAMP/htdocs/web2_api/system/Boot.php(334): CodeIgniter\CodeIgniter->run()
+#9 /Applications/MAMP/htdocs/web2_api/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 /Applications/MAMP/htdocs/web2_api/public/index.php(70): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-07-22 15:16:22 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'digital_products.url' in 'field list'
+[Method: GET, Route: veikals/mani_produkti]
+in SYSTEMPATH/Database/BaseConnection.php on line 692.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `digital_products`.`name`, `digital_products`.`price`, `digital_products`.`url`
+FROM `digital_products`
+JOIN `customers_digital_products` ON `customers_digital_products`.`product_id` = `digital_products`.`id`
+JOIN `customers` ON `customers_digital_products`.`customer` = `customers`.`id`
+WHERE `customers`.`id` = :customers.id:', [...], false)
+ 2 APPPATH/Controllers/Shop.php(80): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Shop->show_products()
+ 4 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop))
+ 5 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH/Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH/index.php(70): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-07-22 15:16:22 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'digital_products.url' in 'field list'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 332.
+ 1 SYSTEMPATH/Database/BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `digital_products`.`name`, `digital_products`.`price`, `digital_products`.`url`
+FROM `digital_products`
+JOIN `customers_digital_products` ON `customers_digital_products`.`product_id` = `digital_products`.`id`
+JOIN `customers` ON `customers_digital_products`.`customer` = `customers`.`id`
+WHERE `customers`.`id` = \'1\'')
+ 2 SYSTEMPATH/Database/BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `digital_products`.`name`, `digital_products`.`price`, `digital_products`.`url`
+FROM `digital_products`
+JOIN `customers_digital_products` ON `customers_digital_products`.`product_id` = `digital_products`.`id`
+JOIN `customers` ON `customers_digital_products`.`customer` = `customers`.`id`
+WHERE `customers`.`id` = \'1\'')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `digital_products`.`name`, `digital_products`.`price`, `digital_products`.`url`
+FROM `digital_products`
+JOIN `customers_digital_products` ON `customers_digital_products`.`product_id` = `digital_products`.`id`
+JOIN `customers` ON `customers_digital_products`.`customer` = `customers`.`id`
+WHERE `customers`.`id` = :customers.id:', [...], false)
+ 4 APPPATH/Controllers/Shop.php(80): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Shop->show_products()
+ 6 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop))
+ 7 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(70): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-07-22 15:16:22 --> [Caused by] mysqli_sql_exception: Unknown column 'digital_products.url' in 'field list'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 327.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(327): mysqli->query('SELECT `digital_products`.`name`, `digital_products`.`price`, `digital_products`.`url`
+FROM `digital_products`
+JOIN `customers_digital_products` ON `customers_digital_products`.`product_id` = `digital_products`.`id`
+JOIN `customers` ON `customers_digital_products`.`customer` = `customers`.`id`
+WHERE `customers`.`id` = \'1\'', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `digital_products`.`name`, `digital_products`.`price`, `digital_products`.`url`
+FROM `digital_products`
+JOIN `customers_digital_products` ON `customers_digital_products`.`product_id` = `digital_products`.`id`
+JOIN `customers` ON `customers_digital_products`.`customer` = `customers`.`id`
+WHERE `customers`.`id` = \'1\'')
+ 3 SYSTEMPATH/Database/BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `digital_products`.`name`, `digital_products`.`price`, `digital_products`.`url`
+FROM `digital_products`
+JOIN `customers_digital_products` ON `customers_digital_products`.`product_id` = `digital_products`.`id`
+JOIN `customers` ON `customers_digital_products`.`customer` = `customers`.`id`
+WHERE `customers`.`id` = \'1\'')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `digital_products`.`name`, `digital_products`.`price`, `digital_products`.`url`
+FROM `digital_products`
+JOIN `customers_digital_products` ON `customers_digital_products`.`product_id` = `digital_products`.`id`
+JOIN `customers` ON `customers_digital_products`.`customer` = `customers`.`id`
+WHERE `customers`.`id` = :customers.id:', [...], false)
+ 5 APPPATH/Controllers/Shop.php(80): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Shop->show_products()
+ 7 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop))
+ 8 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(70): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-07-22 15:16:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-07-22 15:16:30 --> mysqli_sql_exception: Unknown column 'digital_products.img' in 'field list' in /Applications/MAMP/htdocs/web2_api/system/Database/MySQLi/Connection.php:327
+Stack trace:
+#0 /Applications/MAMP/htdocs/web2_api/system/Database/MySQLi/Connection.php(327): mysqli->query('SELECT `digital...', 0)
+#1 /Applications/MAMP/htdocs/web2_api/system/Database/BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `digital...')
+#2 /Applications/MAMP/htdocs/web2_api/system/Database/BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `digital...')
+#3 /Applications/MAMP/htdocs/web2_api/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `digital...', Array, false)
+#4 /Applications/MAMP/htdocs/web2_api/app/Controllers/Shop.php(80): CodeIgniter\Database\BaseBuilder->get()
+#5 /Applications/MAMP/htdocs/web2_api/system/CodeIgniter.php(933): App\Controllers\Shop->show_products()
+#6 /Applications/MAMP/htdocs/web2_api/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop))
+#7 /Applications/MAMP/htdocs/web2_api/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /Applications/MAMP/htdocs/web2_api/system/Boot.php(334): CodeIgniter\CodeIgniter->run()
+#9 /Applications/MAMP/htdocs/web2_api/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 /Applications/MAMP/htdocs/web2_api/public/index.php(70): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-07-22 15:16:30 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'digital_products.img' in 'field list'
+[Method: GET, Route: veikals/mani_produkti]
+in SYSTEMPATH/Database/BaseConnection.php on line 692.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `digital_products`.`name`, `digital_products`.`price`, `digital_products`.`img`
+FROM `digital_products`
+JOIN `customers_digital_products` ON `customers_digital_products`.`product_id` = `digital_products`.`id`
+JOIN `customers` ON `customers_digital_products`.`customer` = `customers`.`id`
+WHERE `customers`.`id` = :customers.id:', [...], false)
+ 2 APPPATH/Controllers/Shop.php(80): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Shop->show_products()
+ 4 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop))
+ 5 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH/Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH/index.php(70): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-07-22 15:16:30 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'digital_products.img' in 'field list'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 332.
+ 1 SYSTEMPATH/Database/BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `digital_products`.`name`, `digital_products`.`price`, `digital_products`.`img`
+FROM `digital_products`
+JOIN `customers_digital_products` ON `customers_digital_products`.`product_id` = `digital_products`.`id`
+JOIN `customers` ON `customers_digital_products`.`customer` = `customers`.`id`
+WHERE `customers`.`id` = \'1\'')
+ 2 SYSTEMPATH/Database/BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `digital_products`.`name`, `digital_products`.`price`, `digital_products`.`img`
+FROM `digital_products`
+JOIN `customers_digital_products` ON `customers_digital_products`.`product_id` = `digital_products`.`id`
+JOIN `customers` ON `customers_digital_products`.`customer` = `customers`.`id`
+WHERE `customers`.`id` = \'1\'')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `digital_products`.`name`, `digital_products`.`price`, `digital_products`.`img`
+FROM `digital_products`
+JOIN `customers_digital_products` ON `customers_digital_products`.`product_id` = `digital_products`.`id`
+JOIN `customers` ON `customers_digital_products`.`customer` = `customers`.`id`
+WHERE `customers`.`id` = :customers.id:', [...], false)
+ 4 APPPATH/Controllers/Shop.php(80): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Shop->show_products()
+ 6 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop))
+ 7 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(70): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-07-22 15:16:30 --> [Caused by] mysqli_sql_exception: Unknown column 'digital_products.img' in 'field list'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 327.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(327): mysqli->query('SELECT `digital_products`.`name`, `digital_products`.`price`, `digital_products`.`img`
+FROM `digital_products`
+JOIN `customers_digital_products` ON `customers_digital_products`.`product_id` = `digital_products`.`id`
+JOIN `customers` ON `customers_digital_products`.`customer` = `customers`.`id`
+WHERE `customers`.`id` = \'1\'', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `digital_products`.`name`, `digital_products`.`price`, `digital_products`.`img`
+FROM `digital_products`
+JOIN `customers_digital_products` ON `customers_digital_products`.`product_id` = `digital_products`.`id`
+JOIN `customers` ON `customers_digital_products`.`customer` = `customers`.`id`
+WHERE `customers`.`id` = \'1\'')
+ 3 SYSTEMPATH/Database/BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `digital_products`.`name`, `digital_products`.`price`, `digital_products`.`img`
+FROM `digital_products`
+JOIN `customers_digital_products` ON `customers_digital_products`.`product_id` = `digital_products`.`id`
+JOIN `customers` ON `customers_digital_products`.`customer` = `customers`.`id`
+WHERE `customers`.`id` = \'1\'')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `digital_products`.`name`, `digital_products`.`price`, `digital_products`.`img`
+FROM `digital_products`
+JOIN `customers_digital_products` ON `customers_digital_products`.`product_id` = `digital_products`.`id`
+JOIN `customers` ON `customers_digital_products`.`customer` = `customers`.`id`
+WHERE `customers`.`id` = :customers.id:', [...], false)
+ 5 APPPATH/Controllers/Shop.php(80): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Shop->show_products()
+ 7 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop))
+ 8 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(70): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-07-22 15:16:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-07-22 15:16:50 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '*
+FROM `digital_products`
+JOIN `customers_digital_products` ON `customers_digita' at line 1 in /Applications/MAMP/htdocs/web2_api/system/Database/MySQLi/Connection.php:327
+Stack trace:
+#0 /Applications/MAMP/htdocs/web2_api/system/Database/MySQLi/Connection.php(327): mysqli->query('SELECT `digital...', 0)
+#1 /Applications/MAMP/htdocs/web2_api/system/Database/BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `digital...')
+#2 /Applications/MAMP/htdocs/web2_api/system/Database/BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `digital...')
+#3 /Applications/MAMP/htdocs/web2_api/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `digital...', Array, false)
+#4 /Applications/MAMP/htdocs/web2_api/app/Controllers/Shop.php(80): CodeIgniter\Database\BaseBuilder->get()
+#5 /Applications/MAMP/htdocs/web2_api/system/CodeIgniter.php(933): App\Controllers\Shop->show_products()
+#6 /Applications/MAMP/htdocs/web2_api/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop))
+#7 /Applications/MAMP/htdocs/web2_api/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /Applications/MAMP/htdocs/web2_api/system/Boot.php(334): CodeIgniter\CodeIgniter->run()
+#9 /Applications/MAMP/htdocs/web2_api/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 /Applications/MAMP/htdocs/web2_api/public/index.php(70): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-07-22 15:16:50 --> CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '*
+FROM `digital_products`
+JOIN `customers_digital_products` ON `customers_digita' at line 1
+[Method: GET, Route: veikals/mani_produkti]
+in SYSTEMPATH/Database/BaseConnection.php on line 692.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `digital_products`.`name`, `digital_products`.`price`, *
+FROM `digital_products`
+JOIN `customers_digital_products` ON `customers_digital_products`.`product_id` = `digital_products`.`id`
+JOIN `customers` ON `customers_digital_products`.`customer` = `customers`.`id`
+WHERE `customers`.`id` = :customers.id:', [...], false)
+ 2 APPPATH/Controllers/Shop.php(80): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Shop->show_products()
+ 4 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop))
+ 5 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH/Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH/index.php(70): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-07-22 15:16:50 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '*
+FROM `digital_products`
+JOIN `customers_digital_products` ON `customers_digita' at line 1
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 332.
+ 1 SYSTEMPATH/Database/BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `digital_products`.`name`, `digital_products`.`price`, *
+FROM `digital_products`
+JOIN `customers_digital_products` ON `customers_digital_products`.`product_id` = `digital_products`.`id`
+JOIN `customers` ON `customers_digital_products`.`customer` = `customers`.`id`
+WHERE `customers`.`id` = \'1\'')
+ 2 SYSTEMPATH/Database/BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `digital_products`.`name`, `digital_products`.`price`, *
+FROM `digital_products`
+JOIN `customers_digital_products` ON `customers_digital_products`.`product_id` = `digital_products`.`id`
+JOIN `customers` ON `customers_digital_products`.`customer` = `customers`.`id`
+WHERE `customers`.`id` = \'1\'')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `digital_products`.`name`, `digital_products`.`price`, *
+FROM `digital_products`
+JOIN `customers_digital_products` ON `customers_digital_products`.`product_id` = `digital_products`.`id`
+JOIN `customers` ON `customers_digital_products`.`customer` = `customers`.`id`
+WHERE `customers`.`id` = :customers.id:', [...], false)
+ 4 APPPATH/Controllers/Shop.php(80): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Shop->show_products()
+ 6 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop))
+ 7 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(70): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-07-22 15:16:50 --> [Caused by] mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '*
+FROM `digital_products`
+JOIN `customers_digital_products` ON `customers_digita' at line 1
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 327.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(327): mysqli->query('SELECT `digital_products`.`name`, `digital_products`.`price`, *
+FROM `digital_products`
+JOIN `customers_digital_products` ON `customers_digital_products`.`product_id` = `digital_products`.`id`
+JOIN `customers` ON `customers_digital_products`.`customer` = `customers`.`id`
+WHERE `customers`.`id` = \'1\'', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `digital_products`.`name`, `digital_products`.`price`, *
+FROM `digital_products`
+JOIN `customers_digital_products` ON `customers_digital_products`.`product_id` = `digital_products`.`id`
+JOIN `customers` ON `customers_digital_products`.`customer` = `customers`.`id`
+WHERE `customers`.`id` = \'1\'')
+ 3 SYSTEMPATH/Database/BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `digital_products`.`name`, `digital_products`.`price`, *
+FROM `digital_products`
+JOIN `customers_digital_products` ON `customers_digital_products`.`product_id` = `digital_products`.`id`
+JOIN `customers` ON `customers_digital_products`.`customer` = `customers`.`id`
+WHERE `customers`.`id` = \'1\'')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `digital_products`.`name`, `digital_products`.`price`, *
+FROM `digital_products`
+JOIN `customers_digital_products` ON `customers_digital_products`.`product_id` = `digital_products`.`id`
+JOIN `customers` ON `customers_digital_products`.`customer` = `customers`.`id`
+WHERE `customers`.`id` = :customers.id:', [...], false)
+ 5 APPPATH/Controllers/Shop.php(80): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Shop->show_products()
+ 7 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop))
+ 8 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(70): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-07-22 15:16:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-22 15:18:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-22 15:23:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-22 15:23:31 --> ErrorException: Undefined array key "id"
+[Method: GET, Route: veikals/mani_produkti]
+in APPPATH/Views/shop/main_screen.php on line 18.
+ 1 APPPATH/Views/shop/main_screen.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', '/Applications/MAMP/htdocs/web2_api/app/Views/shop/main_screen.php', 18)
+ 2 SYSTEMPATH/View/View.php(224): include('/Applications/MAMP/htdocs/web2_api/app/Views/shop/main_screen.php')
+ 3 SYSTEMPATH/View/View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1173): CodeIgniter\View\View->render('shop/main_screen', [], true)
+ 5 APPPATH/Controllers/Shop.php(88): view('shop/main_screen', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Shop->show_products()
+ 7 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop))
+ 8 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(70): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-07-22 15:24:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-22 15:24:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-22 15:24:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-22 15:24:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-22 15:24:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-22 15:24:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-22 15:24:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

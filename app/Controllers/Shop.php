@@ -27,9 +27,14 @@ class Shop extends BaseController
 
 
     public function login(){
-
+        // 1.  lietotājs
         // janis@example.com
         // 12345
+
+        // 2. lietotājs
+        // anna.k@example.com
+        
+
 
             $data = $this->request->getPost();
             $builder = $this->db->table('customers');
@@ -73,7 +78,7 @@ class Shop extends BaseController
 
            $builder = $this->db->table('digital_products');
             $data["products"] = [];
-            $builder->select('*');
+            $builder->select('digital_products.id,digital_products.name, digital_products.price,digital_products.image,digital_products.file_url,digital_products.category');
             $builder->join('customers_digital_products', 'customers_digital_products.product_id = digital_products.id');
             $builder->join('customers', 'customers_digital_products.customer = customers.id');
             $builder->where('customers.id',session()->id);
@@ -83,7 +88,7 @@ class Shop extends BaseController
             }
             
        $data["title"] = "Veikals";
-       return dd($data);
+    
 
         return view('shop/main_screen',$data);
 
@@ -91,7 +96,7 @@ class Shop extends BaseController
 
      private function checkProduct(){
 
-
+      
      }
 
 
