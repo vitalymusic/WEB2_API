@@ -81,6 +81,7 @@ class Shop extends BaseController
             foreach ($query->getResultArray() as $row) {
                $data["products"][] =  $row;
             }
+            
        $data["title"] = "Veikals";
        return dd($data);
 

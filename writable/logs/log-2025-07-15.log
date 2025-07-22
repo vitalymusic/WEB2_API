@@ -287,3 +287,4 @@ WHERE `customer`.`id` = :customer.id:', [...], false)
 10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
 11 FCPATH/index.php(70): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
 DEBUG - 2025-07-15 18:34:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-15 18:35:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
