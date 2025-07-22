@@ -264,6 +264,7 @@ if (isset($uploadedFiles['files'])) {
         
             $data = [];
             $builder = $this->db->table('customers');
+                $builder->select('id,name');
                 $query   = $builder->get();
             foreach ($query->getResult() as $row) {
                 $data[] = $row;
@@ -276,6 +277,7 @@ if (isset($uploadedFiles['files'])) {
 
             $data = [];
             $builder = $this->db->table('digital_products');
+                $builder->select('id,name');
                 $query   = $builder->get();
             foreach ($query->getResult() as $row) {
                 $data[] = $row;
@@ -283,5 +285,23 @@ if (isset($uploadedFiles['files'])) {
 
               return $this->response->setJSON($data);   
     } 
+
+
+    public function registerProduct(){
+
+             $data = esc($this->request->getPost());
+
+              $builder = $this->db->table('customers_digital_products');
+
+              $result = $builder->insert([
+                "customer"=>$data['customers'],
+                "product_id"=>$data['courses'],
+              ]);
+
+              if($result){
+                    return $this->response->setJSON(["success"=>true]);   
+              }
+
+    }
 
 }

@@ -46,6 +46,7 @@ $routes->get('/admin/settings', 'Admin::settings');
 $routes->get('/admin/logout', 'Admin::logout');
 $routes->get('/admin/getCustomers', 'Admin::getCustomers');
 $routes->get('/admin/getProducts', 'Admin::getProducts');
+$routes->post('/admin/registerproduct', 'Admin::registerProduct');
 
 
 // upload file
