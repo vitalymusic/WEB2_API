@@ -33,7 +33,7 @@ class Shop extends BaseController
 
         // 2. lietotājs
         // anna.k@example.com
-        
+
 
 
             $data = $this->request->getPost();
@@ -90,7 +90,7 @@ class Shop extends BaseController
        $data["title"] = "Veikals";
     
 
-        return view('shop/main_screen',$data);
+        return view('shop/user_screen',$data);
 
     }
 

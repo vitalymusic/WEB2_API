@@ -5,7 +5,24 @@
   <h1>Welcome to MyShop</h1>
   <p>Discover the best deals on our platform!</p>
 </div>
+<style>
+    #cartSidebar {
+      width: 300px;
+      position: fixed;
+      top: 0;
+      right: -300px;
+      height: 100%;
+      background-color: white;
+      border-left: 1px solid #ddd;
+      box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+      z-index: 1050;
+      transition: right 0.3s ease-in-out;
+    }
+    #cartSidebar.show {
+      right: 0;
+    }
 
+</style>
 <div class="row m-4 ">
   <!-- Example Product Cards -->
   <?php foreach ($products as $product): ?>
@@ -15,7 +32,8 @@
         <div class="card-body">
           <h5 class="card-title"><?= esc($product['name']) ?></h5>
           <p class="card-text">€<?= number_format($product['price'], 2) ?></p>
-          <a href="/product/<?= $product['id'] ?>" class="btn btn-primary">View</a>
+          <a href="/product/<?= $product['id'] ?>" class="btn btn-primary">Skatīt</a>
+          <a href="" class="btn btn-secondary insertToCartBtn" data-name="<?= esc($product['name']) ?>" data-price="<?= number_format($product['price'], 2) ?>" data-id="<?= $product['id'] ?>" id="">Nopirkt</a>
         </div>
       </div>
     </div>
@@ -56,8 +74,37 @@
 </div>
 <!-- Login page -->
 
-<script>
 
+<!-- Groza panelis -->
+<div id="cartSidebar">
+        <div class="p-3 border-bottom d-flex justify-content-between align-items-center">
+          <h5>Cart</h5>
+          <button class="btn-close" id="closeCartBtn"></button>
+        </div>
+        <div class="p-3" id="cartItems">
+            <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <td>Nosaukums</td>
+                    <td>Cena</td>
+                    <td>Skaits</td>
+                    <td>Summa</td>
+                  </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="p-3 border-top">
+          <strong>Kopā par visām precēm: $<span id="cartTotal">0.00</span></strong>
+        </div>
+</div>
+
+
+<!-- Groza panelis -->
+
+<script>
    var loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
 
   function showUserLogin(){
@@ -81,4 +128,94 @@ $('#customerForm').submit((e)=>{
 
 })
 </script>
+
+
+
+<script>
+  $(document).ready(()=>{
+    $('#closeCartBtn').click(()=>{
+      $('#cartSidebar').removeClass('show');
+    })
+    $('#showCartBtn').click((e)=>{
+      e.preventDefault();
+      $('#cartSidebar').addClass('show');
+    })
+
+
+    $('.insertToCartBtn').click((e)=>{
+       e.preventDefault();
+      let data = {
+        id: e.target.dataset.id,
+        name: e.target.dataset.name,
+        price: e.target.dataset.price,
+        quantity:1
+      }
+
+      addNewItem(data);
+    })
+
+
+  })
+
+
+</script>
+
+<script>
+  let cart = [];
+
+  function updateCart(){
+          $('#cartItems tbody').html("");
+    cart.forEach((item,i)=>{
+
+          $('#cartItems tbody').append(`
+            <tr>
+              <td>${item.name}</td>
+              <td>${item.price}</td>
+              <td>${item.quantity}</td>
+              <td>${(item.price*item.quantity).toFixed(2)}</td>
+            <tr>
+          
+          
+          `)
+    })
+    console.log(cart);
+  }
+
+  function addNewItem(data){
+      let result = cart.findIndex((item)=>{
+            if(item.id == data.id){
+              return item
+            }
+        })
+        if(result!= -1){
+          cart[result].quantity ++;
+           updateCart();
+        }else{
+           cart.push(data);
+            updateCart();
+        }
+  }
+
+  function removeItem(id){
+
+  }
+
+
+
+  // grozs
+  
+
+  // 1. Nospiežot pogu, masīvā tiek pievienots elements ar produkta Id, Nosaukumu un cenu.
+  // 2. Pirms ievitot masīvā šo elementu pārbauda vai nav jau tāds un ja ir tad palielināt skaitu. 
+  // 3. Saskaitīt visu elementu summu
+
+
+
+
+
+
+
+</script>
+
+
 <?= $this->endSection() ?>
