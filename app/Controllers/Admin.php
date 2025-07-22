@@ -251,7 +251,12 @@ if (isset($uploadedFiles['files'])) {
 
 
 
+    public function settings(){
+        $data["title"] = "Iestatījumi";
+        $data["active_page"] = "settings";
+        return view('admin/settings_screen.php',$data);
 
+    }
 
 
 

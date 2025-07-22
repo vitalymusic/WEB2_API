@@ -7,15 +7,16 @@
 </div>
 <style>
     #cartSidebar {
-      width: 300px;
+      width: 400px;
       position: fixed;
       top: 0;
-      right: -300px;
+      right: -400px;
       height: 100%;
       background-color: white;
       border-left: 1px solid #ddd;
       box-shadow: -2px 0 5px rgba(0,0,0,0.2);
       z-index: 1050;
+
       transition: right 0.3s ease-in-out;
     }
     #cartSidebar.show {
@@ -161,12 +162,15 @@ $('#customerForm').submit((e)=>{
 </script>
 
 <script>
-  let cart = [];
 
+  let cart = JSON.parse(window.localStorage.getItem("cart"));
+  updateCart();
   function updateCart(){
-          $('#cartItems tbody').html("");
-    cart.forEach((item,i)=>{
 
+          $('#cartItems tbody').html("");
+          let total = 0;
+    cart.forEach((item,i)=>{
+            total+=item.price*item.quantity;
           $('#cartItems tbody').append(`
             <tr>
               <td>${item.name}</td>
@@ -178,7 +182,8 @@ $('#customerForm').submit((e)=>{
           
           `)
     })
-    console.log(cart);
+    $('#cartTotal').text(total.toFixed(2));
+    window.localStorage.setItem('cart',JSON.stringify(cart));
   }
 
   function addNewItem(data){

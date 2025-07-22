@@ -42,6 +42,7 @@ $routes->get('/admin/pages', 'Admin::pages');
 $routes->get('/admin/users', 'Admin::users');
 $routes->get('/admin/posts', 'Admin::posts');
 $routes->get('/admin/gallery', 'Admin::gallery');
+$routes->get('/admin/settings', 'Admin::settings');
 $routes->get('/admin/logout', 'Admin::logout');
 
 

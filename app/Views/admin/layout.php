@@ -36,7 +36,7 @@
         <a href="<?=base_url('/admin/gallery')?>" class="nav-link <?= $active_page=="gallery"?"active":"" ?>">📝 Galerija</a>
       </li>
       <li>
-        <a href="#" class="nav-link">⚙️ Iestatījumi</a>
+        <a href="<?=base_url('/admin/settings')?>" class="nav-link <?= $active_page=="settings"?"active":"" ?>">⚙️ Iestatījumi</a>
       </li>
     </ul>
     <hr class="text-white" />
