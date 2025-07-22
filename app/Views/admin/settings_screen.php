@@ -6,34 +6,28 @@
 
 <?= $this->section('content') ?>
     <h1><?= $title?></h1>
-    <form method="post" action="/register">
+    <form method="post" action="">
     <div class="row">
       <!-- Available Courses -->
       <div class="col-md-6 mb-3">
-        <label for="availableCourses" class="form-label">Available Courses</label>
-        <select multiple class="form-select" id="availableCourses" name="available_courses[]">
+        <label for="availableCourses" class="form-label">Pircēji</label>
+        <select class="form-select" id="availableCustomers" name="customers">
           <option value="html">HTML Basics</option>
-          <option value="css">CSS Styling</option>
-          <option value="js">JavaScript Intro</option>
-          <option value="bootstrap">Bootstrap 5</option>
         </select>
-        <div class="form-text">Hold Ctrl (or Cmd) to select multiple options.</div>
       </div>
 
       <!-- Selected Courses (e.g. from a pre-filled list) -->
       <div class="col-md-6 mb-3">
-        <label for="selectedCourses" class="form-label">Your Selected Courses</label>
-        <select multiple class="form-select" id="selectedCourses" name="selected_courses[]">
+        <label for="selectedCourses" class="form-label">Pieejamie produkti</label>
+        <select class="form-select" id="selectedCourses" name="courses">
           <option value="react" selected>React Fundamentals</option>
-          <option value="nodejs" selected>Node.js Basics</option>
         </select>
-        <div class="form-text">Pre-selected courses you’ve chosen before.</div>
       </div>
     </div>
 
     <!-- Submit Button -->
     <div class="text-center mt-4">
-      <button type="submit" class="btn btn-primary btn-lg">Register</button>
+      <button type="submit" class="btn btn-primary btn-lg">Reģistrēt pakalpojumu</button>
     </div>
   </form>
 
@@ -42,6 +36,25 @@
 
 
     <script>
+            // 1. Jaaizpilda lietotāju saraksts
+            // 2. Jaaizpilda produktu saraksts saraksts
+            // 3. Jāapstrādā formas darbība 
+                
+
+            function getCustomers(){
+                  $.get('<?=base_url('/admin/getCustomers')?>',function(resp){
+
+                  })  
+
+            }
+
+            function getProducts(){
+                    $.get('<?=base_url('/admin/getProducts')?>',function(resp){
+                        
+                  }) 
+
+            }
+
 
 
     </script>

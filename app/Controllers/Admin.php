@@ -260,4 +260,28 @@ if (isset($uploadedFiles['files'])) {
 
 
 
+    public function getCustomers(){
+        
+            $data = [];
+            $builder = $this->db->table('customers');
+                $query   = $builder->get();
+            foreach ($query->getResult() as $row) {
+                $data[] = $row;
+            }
+
+              return $this->response->setJSON($data);   
+
+    } 
+    public function getProducts(){
+
+            $data = [];
+            $builder = $this->db->table('digital_products');
+                $query   = $builder->get();
+            foreach ($query->getResult() as $row) {
+                $data[] = $row;
+            }
+
+              return $this->response->setJSON($data);   
+    } 
+
 }
